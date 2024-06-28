@@ -1,6 +1,6 @@
 import cors from 'cors';
 import helmet from 'helmet';
-import express from 'express';
+import express, { Request } from 'express';
 import config from './configs/config';
 import logger from './utils/logger.util';
 import compression from 'compression';
@@ -11,6 +11,9 @@ import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { useExpressServer, useContainer } from 'routing-controllers';
 import { AuthController } from './controllers/auth.controller';
 import { ErrorMiddleware } from './middlewares/error.middleware';
+import { TaskController } from 'controllers/task.controller';
+import { AuthService } from 'services/auth.service';
+import { Errors } from 'utils/api.util';
 
 useContainer(Container);
 
@@ -26,7 +29,7 @@ app.use(express.json());
 
 // routing-controllers
 useExpressServer(app, {
-    controllers: [AuthController],
+    controllers: [AuthController, TaskController],
     middlewares: [LoggerMiddleware, ErrorMiddleware],
     defaultErrorHandler: false,
     cors: config.cors,
@@ -34,6 +37,17 @@ useExpressServer(app, {
     validation: {
         forbidUnknownValues: true,
         stopAtFirstError: true,
+    },
+    currentUserChecker: async (action) => {
+        const req = action.request as Request;
+        const service = Container.get(AuthService);
+
+        const payload = await service.getUserPayload(req);
+        if (!payload) {
+            throw Errors.NO_SESSION;
+        }
+
+        return payload;
     },
 });
 

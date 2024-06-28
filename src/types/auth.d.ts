@@ -2,4 +2,8 @@ interface AuthToken {
     accessToken: string;
 }
 
-export { AuthToken }
+interface UserPayload {
+    userId: number;
+}
+
+export { AuthToken, UserPayload }
