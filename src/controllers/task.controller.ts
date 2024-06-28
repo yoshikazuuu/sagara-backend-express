@@ -1,11 +1,10 @@
-import { User } from "@prisma/client";
 import { Response } from "express";
 import { Body, Controller, CurrentUser, Delete, Get, Param, Post, Put, Res } from "routing-controllers";
-import { TaskService } from "services/task.service";
 import { Service } from "typedi";
-import { UserPayload } from "types/auth";
-import { sendResponse } from "utils/api.util";
-import { TaskDTO } from "validations/task.validation";
+import { TaskService } from "../services/task.service";
+import { UserPayload } from "../types/auth";
+import { sendResponse } from "../utils/api.util";
+import { TaskDTO } from "../validations/task.validation";
 
 @Service()
 @Controller()

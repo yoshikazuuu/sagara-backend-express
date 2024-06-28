@@ -3,10 +3,10 @@ import "reflect-metadata";
 import { Controller, Body, Post, Res } from "routing-controllers";
 import { Service } from "typedi";
 import { Response } from "express";
-import { ACCESS_TOKEN_COOKIE, sendResponse } from "utils/api.util";
-import { AuthService } from "services/auth.service";
-import { LoginDTO } from "validations/user.validation";
-import config from "configs/config";
+import { ACCESS_TOKEN_COOKIE, sendResponse } from "../utils/api.util";
+import { AuthService } from "../services/auth.service";
+import { LoginDTO } from "../validations/user.validation";
+import config from "../configs/config";
 
 @Service()
 @Controller()

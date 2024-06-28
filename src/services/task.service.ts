@@ -3,8 +3,8 @@ import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import { Service } from "typedi";
-import { ResponseError, sendResponse } from "utils/api.util";
-import { TaskDTO } from "validations/task.validation";
+import { ResponseError } from "../utils/api.util";
+import { TaskDTO } from "../validations/task.validation";
 
 const prisma = new PrismaClient();
 

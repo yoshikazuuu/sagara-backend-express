@@ -4,10 +4,16 @@
   "description": "Entry test",
   "main": "src/app.ts",
   "scripts": {
-    "start": "nodemon src/app.ts",
-    "build": "tsc",
-    "dev": "nodemon src/app.ts",
-    "jwt:generate": "ts-node scripts/jwt-generate.ts"
+    "dev": "cross-env NODE_ENV=development nodemon ./src/server.ts",
+    "start": "cross-env NODE_ENV=production node ./build/server.js",
+    "seed": "prisma migrate dev",
+    "clean": "rimraf ./build",
+    "jwt:generate": "ts-node ./scripts/jwt-generate.ts",
+    "compile": "npm run clean && tsc",
+    "compile:debug": "npm run compile --diagnostics"
+  },
+  "prisma": {
+    "seed": "ts-node ./scripts/seeder.ts"
   },
   "author": "Jerry Febriano",
   "license": "ISC",

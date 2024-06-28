@@ -1,4 +1,4 @@
-import logger from 'utils/logger.util';
+import logger from '../utils/logger.util';
 
 import { Service } from 'typedi';
 import { HttpError, Middleware } from 'routing-controllers';
@@ -6,7 +6,7 @@ import { StatusCodes } from 'http-status-codes';
 import {
     ResponseError,
     sendResponse, Errors,
-} from 'utils/api.util';
+} from '../utils/api.util';
 
 import type { Request, Response } from 'express';
 import type { ExpressErrorMiddlewareInterface } from 'routing-controllers';
