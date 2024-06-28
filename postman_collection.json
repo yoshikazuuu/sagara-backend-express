@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"email\": \"user1@example.com\",\n  \"password\": \"Password123!\"\n}\n",
+					"raw": "{\n  \"email\": \"user3@example.com\",\n  \"password\": \"Password123!\"\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -21,14 +21,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/login",
+					"raw": "http://localhost:5000/register",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "5000",
 					"path": [
-						"login"
+						"register"
 					]
 				}
 			},
@@ -41,7 +41,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"email\": \"user1@example.com\",\n  \"password\": \"Password123!\"\n}\n",
+					"raw": "{\n  \"email\": \"user2@example.com\",\n  \"password\": \"Password123!\"\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -69,7 +69,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"email\": \"user1@example.com\",\n  \"password\": \"Password123!\"\n}\n",
+					"raw": "{\n  \"title\": \"REMINDER NANTI\",\n  \"description\": \"Makan siang\"\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -128,34 +128,6 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"email\": \"user1@example.com\",\n  \"password\": \"Password123!\"\n}\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:5000/tasks",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"tasks"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/tasks/:id",
-			"request": {
-				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -180,7 +152,42 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "1"
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/tasks/:id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"ALERT NANTI v2\",\n  \"description\": \"Makan siang\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/tasks/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"tasks",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5"
 						}
 					]
 				}
@@ -202,14 +209,21 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/tasks",
+					"raw": "http://localhost:5000/tasks/:id",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "5000",
 					"path": [
-						"tasks"
+						"tasks",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5"
+						}
 					]
 				}
 			},
