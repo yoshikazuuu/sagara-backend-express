@@ -8,6 +8,10 @@ export interface APIResponse {
     data?: unknown;
 }
 
+export const ACCESS_TOKEN_COOKIE = 'accessToken';
+// Not yet implemented, not required for this case (presumably)
+export const REFRESH_TOKEN_COOKIE = 'refreshToken';
+
 /**
  * Sends a JSON response with standardization.
  * Normally, there aren't any template to send responses,

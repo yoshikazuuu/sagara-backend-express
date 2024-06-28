@@ -2,9 +2,9 @@ import { PrismaClient, User } from "@prisma/client";
 import { Service } from "typedi";
 import bcrypt from "bcrypt";
 import { sign } from "jsonwebtoken";
-import config from "../configs/config";
-import { AuthToken } from "../types/auth";
-import { ResponseError } from "../utils/api.util";
+import config from "configs/config";
+import { AuthToken } from "types/auth";
+import { ResponseError } from "utils/api.util";
 import { StatusCodes } from "http-status-codes";
 
 const prisma = new PrismaClient();
@@ -27,10 +27,19 @@ export class AuthService {
     }
 
     async register(email: string, password: string): Promise<User> {
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const user = await prisma.user.findUnique({ where: { email } });
+        if (user) {
+            throw new ResponseError("User already exists", StatusCodes.BAD_REQUEST);
+        }
+
+        const hashedPassword = await this.hashPassword(password);
         return await prisma.user.create({
             data: { email, password: hashedPassword },
         });
+    }
+
+    async hashPassword(password: string) {
+        return bcrypt.hash(password, config.hashRounds);
     }
 
     private async generateToken(user: User): Promise<string> {

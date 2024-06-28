@@ -1,0 +1,5 @@
+What learned so far:
+
+1. Storing JWT still become a problem without any libraries, localStorage is not safe, sessionStorage is not safe, and cookies is not safe (we use this for current implementation).
+2. Dependency Injection is a good practice to make the code more testable and maintainable.
+3. Idk about this approach, avoiding try-catch block in the code by using early return in middleware.
