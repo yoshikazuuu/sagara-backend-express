@@ -1,8 +1,21 @@
 {
+  "name": "sagara-backend-express",
+  "version": "1.0.0",
+  "description": "Entry test",
+  "main": "src/app.ts",
+  "scripts": {
+    "start": "nodemon src/app.ts",
+    "build": "tsc",
+    "dev": "nodemon src/app.ts",
+    "jwt:generate": "ts-node scripts/jwt-generate.ts"
+  },
+  "author": "Jerry Febriano",
+  "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.16.1",
     "@types/luxon": "^3.4.2",
     "@types/morgan": "^1.9.9",
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
@@ -12,6 +25,8 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "helmet": "^7.1.0",
+    "http-status-codes": "^2.3.0",
+    "jsonwebtoken": "^9.0.2",
     "luxon": "^3.4.4",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
@@ -24,11 +39,14 @@
     "winston-daily-rotate-file": "^5.0.0"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/body-parser": "^1.19.5",
     "@types/compression": "^1.7.5",
     "@types/cookie-parser": "^1.4.7",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
-    "@types/multer": "^1.4.11"
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/multer": "^1.4.11",
+    "tsconfig-paths": "^4.2.0"
   }
 }

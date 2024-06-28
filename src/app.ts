@@ -9,7 +9,8 @@ import Container from 'typedi';
 
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { useExpressServer, useContainer } from 'routing-controllers';
-import { UserController } from './controllers/UserController';
+import { AuthController } from './controllers/auth.controller';
+import { ErrorMiddleware } from './middlewares/error.middleware';
 
 useContainer(Container);
 
@@ -25,8 +26,15 @@ app.use(express.json());
 
 // routing-controllers
 useExpressServer(app, {
-    controllers: [UserController],
-    middlewares: [LoggerMiddleware],
+    controllers: [AuthController],
+    middlewares: [LoggerMiddleware, ErrorMiddleware],
+    defaultErrorHandler: false,
+    cors: config.cors,
+    development: config.isDev,
+    validation: {
+        forbidUnknownValues: true,
+        stopAtFirstError: true,
+    },
 });
 
 

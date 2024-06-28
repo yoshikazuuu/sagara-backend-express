@@ -23,16 +23,11 @@ const corsOption: CorsOptions = {
 
 const config = {
     jwt: {
-        accessSecret: env.JWT_ACCESS_SECRET!,
-        refreshSecret: env.JWT_REFRESH_SECRET!,
+        accessSecret: env.JWT_SECRET!,
 
         accessExpire: env.JWT_ACCESS_EXPIRE!,
-        refreshExpire: env.JWT_REFRESH_EXPIRE!,
     },
     hashRounds: 12,
-    db: {
-        url: env.DATABASE_URL!,
-    },
     cors: corsOption,
     isDev: (env.NODE_ENV === 'development'),
 };
